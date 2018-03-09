@@ -1,0 +1,21 @@
+{
+	"name": "hostlink/r-bs",
+	"description": "Raymond php bootstrap library",
+	"autoload": {
+		"psr-4": {
+			"BS\\": "src/"
+		}
+	},
+	"require": {
+		"php": ">=5.4",
+		"hostlink/r-p":"1.*"
+	},
+	"type": "library",
+	"license": "proprietary",
+	"authors":[
+	{
+		"name": "Raymond Chong"
+	}],
+	"minimum-stability": "stable",
+	"version": "1.0.1"
+}
