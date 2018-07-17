@@ -33,5 +33,3 @@ class ButtonGroup extends \P\HTMLDivElement {
 		return $bdd;
 	}
 }
-
-?>
