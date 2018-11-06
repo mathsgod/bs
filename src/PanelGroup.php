@@ -1,32 +1,27 @@
 <?php
 
 namespace BS;
-class PanelGroup extends \P\Query {
-    public $panel = array();
 
-    public function __construct() {
-        parent::__construct("<div></div>");
-        $this->addClass("panel-group");
-        $this->attr("id", uniqid());
+class PanelGroup extends \P\HTMLDivElement
+{
+    public $panel = [];
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->classList->add("panel-group");
+        $this->attributes["id"] = uniqid();
     }
 
-    public function addPanel(Panel $panel) {
+    public function addPanel(Panel $panel)
+    {
         $this->panel[] = $panel;
+
+        $id = $this->attributes["id"];
+        p($panel)->find(".panel-title")->find("a")->attr('data-parent', "#{$id}");
+
+        $this->append($panel);
+        return $panel;
     }
 
-    public function __toString() {
-        $this->empty();
-
-        $id = $this->attr("id");
-
-        foreach($this->panel as $panel) {
-            $p = p($panel);
-            $p->find("h3")->find("a")->attr('data-parent', "#{$id}");
-            $this->append($p);
-        }
-
-        return parent::__toString();
-    }
 }
-
-?>

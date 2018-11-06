@@ -1,44 +1,11 @@
 <?php
 
 namespace BS;
-class PanelHeading extends \P\HTMLDivElement {
-	public $title;
-	public function __construct() {
-		parent::__construct();
-		$this->classList->add("panel-heading");
-	}
 
-	public function title($text) {
-		if (!$this->title) {
-			$this->title = p("h4")->addClass("panel-title")->appendTo($this);
-		}
-
-		if ($text) {
-			$a = $this->title->find("a");
-			if ($a->size()) {
-				$a->text($text);
-			} else {
-				$this->title->text($text);
-			}
-		}
-
-		return $this->title;
-	}
-
-	public function collapse($id) {
-		$title = $this->title();
-		$a = $title->find("a");
-		if (!$a->size()) {
-			$a = p("a")->attr("data-toggle", "collapse")->attr("href", "#$id");
-			$this->title->wrapInner($a);
-		}
-		return $a;
-	}
-
-}
-
-class PanelClassTokenList extends \P\DOMTokenList {
-	public function offsetSet($offset, $value) {
+class PanelClassTokenList extends \P\DOMTokenList
+{
+	public function offsetSet($offset, $value)
+	{
 		if (in_array($value, Panel::$_CLASS)) {
 			$this->token = array_diff($this->token, Panel::$_CLASS);
 		}
@@ -46,18 +13,18 @@ class PanelClassTokenList extends \P\DOMTokenList {
 	}
 }
 
-class Panel extends \P\HTMLDivElement {
+class Panel extends \P\HTMLDivElement
+{
 	public $collapsible = false;
 	public $collapsed = true;
 
-	private $body;
-	private $heading;
-	private $footer;
 
 	private $id;
 
-	public static $_CLASS = ["panel-default", "panel-primary", "panel-success", "panel-info", "panel-warning",
-		"panel-danger"];
+	public static $_CLASS = [
+		"panel-default", "panel-primary", "panel-success", "panel-info", "panel-warning",
+		"panel-danger"
+	];
 
 	public static $TYPE = array(
 		"default",
@@ -65,18 +32,21 @@ class Panel extends \P\HTMLDivElement {
 		"success",
 		"info",
 		"warning",
-		"danger");
+		"danger"
+	);
 
-	public function __construct($type = "default") {
+	public function __construct($type = "default")
+	{
 		parent::__construct();
-		$this->classList=new PanelClassTokenList();
+		$this->classList = new PanelClassTokenList();
 		$this->classList->add("panel");
 		$this->classList->add("panel-$type");
 	}
 
-	public function heading($label) {
+	public function heading($label)
+	{
 		if (!$this->heading) {
-			$this->heading = new PanelHeading;
+			$this->heading = new PanelHeading();
 			p($this->heading)->prependTo($this);
 		}
 
@@ -84,43 +54,52 @@ class Panel extends \P\HTMLDivElement {
 			$this->heading->title($label);
 		}
 
-		return $this->heading;
+		return p($this->heading);
 	}
 
-	public function body() {
-		if (!$this->body) {
-			$this->body = p("div");
-			$this->body->addClass("panel-body");
+	public function __get($name)
+	{
+		if ($name == "body") {
+			$this->body = new PanelBody();
+			$this->body->appendTo($this);
+			return $this->body;
+		} elseif ($name == "heading") {
+			$this->heading = new PanelHeading();
+			$this->heading->appendTo($this);
+			return $this->heading;
+		} elseif ($name == "footer") {
+			$this->footer = new PanelFooter();
+			$this->footer->appendTo($this);
+			return $this->footer;
 
-			if ($this->footer) {
-				$this->footer->before($this->body);
-			} else {
-				$this->body->appendTo($this);
-			}
 		}
-		return $this->body;
+		return parent::__get($name);
 	}
 
-	public function footer($footer) {
-		if (!$this->footer) {
-			$this->footer = p("div")->addClass("panel-footer")->appendTo($this);
-		}
-		return $this->footer;
+	public function body()
+	{
+		return p($this->body);
 	}
 
-	public function collapsible($collapsed = false) {
+	public function footer($footer)
+	{
+		return p($this->footer);
+	}
+
+	public function collapsible($collapsed = false)
+	{
 		$id = uniqid();
 		$this->body()->attr("id", $id);
-		$this->heading()->collapse($id);
+		$this->heading->collapse($id);
 
-		$title = $this->heading()->collapse($id);
+		$title = $this->heading->collapse($id);
 
 		if ($collapsed) {
-			$a = $this->heading()->title()->find("a");
+			$a = $this->heading->title()->find("a");
 			$a->addClass("collapsed");
-			$this->body()->addClass("collapse");
+			$this->body->addClass("collapse");
 		} else {
-			$this->body()->addClass("collapse in");
+			$this->body->addClass("collapse in");
 		}
 
 		return $this;
