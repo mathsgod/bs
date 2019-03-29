@@ -6,51 +6,74 @@ class ButtonClassTokenList extends \P\DOMTokenList
 {
 	public function offsetSet($offset, $value)
 	{
-		if (in_array($value, Button::$_CLASS)) {
-			$this->token = array_diff($this->token, Button::$_CLASS);
-		}
 
-		if (in_array($value, Button::$_SIZE)) {
-			$this->token = array_diff($this->token, Button::$_SIZE);
+		$values = $this->values();
+		if ($this->values()) {
+			if (in_array($value, Button::$_CLASS)) {
+				$this->value = implode(" ", array_diff($values, Button::$_CLASS));
+			}
+
+			if (in_array($value, Button::$_SIZE)) {
+				$this->value = implode(" ", array_diff($values, Button::$_SIZE));
+			}
 		}
 
 		parent::offsetSet($offset, $value);
 	}
 }
 
-class Button extends \P\HTMLButtonElement
+class Button extends Element
 {
 	public static $_SIZE = ["btn-lg", "btn-sm", "btn-xs"];
 	public static $_CLASS = ["btn-default", "btn-primary", "btn-success", "btn-info", "btn-warning", "btn-danger"];
 
-	public function __construct($option = "default", $size = null)
+	public function __construct($option = "default", $size = null, $tagName = "button")
 	{
-		parent::__construct();
-		$this->attributes["type"] = "button";
-		$this->classList = new ButtonClassTokenList;
-		$this->classList->add("btn");
-		$this->classList->add("btn-$option");
+		parent::__construct($tagName);
+		$this->setAttribute("type", "button");
+
+
+		$this->classList[] = "btn";
+		$this->classList[] = "btn-$option";
 
 		if ($size) {
-			$this->classList->add("btn-$size");
+			$this->classList[] = "btn-$size";
 		}
+	}
+
+	public function __get($name)
+	{
+		switch ($name) {
+			case "classList":
+				if (!$this->hasAttribute("class")) {
+					$this->setAttribute("class", "");
+				}
+				return new ButtonClassTokenList($this->attributes->getNamedItem("class"));
+				break;
+		}
+		return parent::__get($name);
 	}
 
 	public function target($target)
 	{
-		$this->attr("target", $target);
+		$this->setAttribute("target", $target);
 		return $this;
 	}
 
 	public function href($getter)
 	{
-		$this->tagName = "a";
-		if ($object = p($this)->data("object")) {
-			$this->attributes["href"] = \My\Func::_($getter)->call($object);
-		} else {
-			$this->attributes["href"] = $getter;
+		$a = new Button("default", null, "a");
+		foreach ($this->attributes as $attr) {
+			$a->setAttribute($attr->name, $attr->value);
 		}
-		return $this;
+		$this->ownerDocument->replaceChild($this->ownerDocument->importNode($a), $this);
+
+		if ($object = p($this)->data("object")) {
+			$a->setAttribute("href", \My\Func::_($getter)->call($object));
+		} else {
+			$a->setAttribute("href", $getter);
+		}
+		return $a;
 	}
 
 	public function text($text)
@@ -69,8 +92,8 @@ class Button extends \P\HTMLButtonElement
 
 	public function tooltip($title)
 	{
-		$this->attributes["title"] = $title;
-		$this->attributes["data-toggle"] = "tooltip";
+		$this->setAttribute("title", $title);
+		$this->setAttribute("data-toggle", "tooltip");
 		return $this;
 	}
 
@@ -82,8 +105,9 @@ class Button extends \P\HTMLButtonElement
 			p($icon)->addClass($class);
 		} else {
 			$i = p("<i></i>")->addClass($class);
-			p($this)->prepend($i);
-			$i->after(new \P\Text(" "));
+
+			p($this)->prepend($i[0]);
+			p($this)->find("i:first-child")->after(new \P\Text(" "));
 		}
 
 		return $this;

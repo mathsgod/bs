@@ -1,17 +1,14 @@
 <?php
 
 namespace BS;
-class Alert extends \P\HTMLDivElement {
+class Alert extends Element {
 
 	public function __construct($type = "success") {
-		parent::__construct();
+		parent::__construct("div");
 		$this->classList->add("alert");
 		$this->classList->add("alert-$type");
 
-		$a = new \P\HTMLAnchorElement;
-		$a->classList->add("close");
-		$a->attributes["href"] = "#";
-		p($a)->text("×");
+		$a=p("a")->addClass("close")->attr("href","#")->text("x");
 		p($this)->append($a);
 	}
 

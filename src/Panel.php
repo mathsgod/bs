@@ -6,20 +6,20 @@ class PanelClassTokenList extends \P\DOMTokenList
 {
 	public function offsetSet($offset, $value)
 	{
-		if (in_array($value, Panel::$_CLASS)) {
-			$this->token = array_diff($this->token, Panel::$_CLASS);
+		$values = $this->values();
+		if ($this->values()) {
+			if (in_array($value, Panel::$_CLASS)) {
+				$this->value = implode(" ", array_diff($values, Panel::$_CLASS));
+			}
 		}
 		parent::offsetSet($offset, $value);
 	}
 }
 
-class Panel extends \P\HTMLDivElement
+class Panel extends Element
 {
 	public $collapsible = false;
 	public $collapsed = true;
-
-
-	private $id;
 
 	public static $_CLASS = [
 		"panel-default", "panel-primary", "panel-success", "panel-info", "panel-warning",
@@ -37,19 +37,13 @@ class Panel extends \P\HTMLDivElement
 
 	public function __construct($type = "default")
 	{
-		parent::__construct();
-		$this->classList = new PanelClassTokenList();
+		parent::__construct("div");
 		$this->classList->add("panel");
 		$this->classList->add("panel-$type");
 	}
 
 	public function heading($label)
 	{
-		if (!$this->heading) {
-			$this->heading = new PanelHeading();
-			p($this->heading)->prependTo($this);
-		}
-
 		if ($label) {
 			$this->heading->title($label);
 		}
@@ -61,17 +55,16 @@ class Panel extends \P\HTMLDivElement
 	{
 		if ($name == "body") {
 			$this->body = new PanelBody();
-			$this->body->appendTo($this);
+			p($this)->append($this->body);
 			return $this->body;
 		} elseif ($name == "heading") {
 			$this->heading = new PanelHeading();
-			$this->heading->appendTo($this);
+			p($this)->append($this->heading);
 			return $this->heading;
 		} elseif ($name == "footer") {
 			$this->footer = new PanelFooter();
-			$this->footer->appendTo($this);
+			p($this)->appendTo($this->footer);
 			return $this->footer;
-
 		}
 		return parent::__get($name);
 	}
@@ -81,7 +74,7 @@ class Panel extends \P\HTMLDivElement
 		return p($this->body);
 	}
 
-	public function footer($footer)
+	public function footer()
 	{
 		return p($this->footer);
 	}
@@ -97,9 +90,9 @@ class Panel extends \P\HTMLDivElement
 		if ($collapsed) {
 			$a = $this->heading->title()->find("a");
 			$a->addClass("collapsed");
-			$this->body->addClass("collapse");
+			p($this->body)->addClass("collapse");
 		} else {
-			$this->body->addClass("collapse in");
+			p($this->body)->addClass("collapse in");
 		}
 
 		return $this;

@@ -1,34 +1,32 @@
 <?
 namespace BS;
-class InputGroup extends \P\Query{
-	public function __construct(){
+
+class InputGroup extends Element
+{
+	public function __construct()
+	{
 		parent::__construct("div");
-		$this->addClass("input-group");
+		$this->classList->add("input-group");
 	}
 
-	public function button($option="default"){
-		$btn=new Button($option);
-		$btn->type="button";
-		$span=p("span");
+	public function button($option = "default")
+	{
+		$btn = new Button($option);
+		$span = p("span");
 		$span->addClass("input-group-btn");
 		$span->append($btn);
-		$this->append($span);
-        $bc=new ButtonCollection;
-        $bc[]=$btn;
-		return $bc;
+		p($this)->append($span);
+		return p($btn);
 	}
 
-	public function input($index=null){
-		$input=new \P\Query("input");
-		if($index)$input->index($index);
-		if($index)$input->name($index);
+	public function input($index = null)
+	{
+		$input = new Input("input");
+		//		if ($index) $input->index($index);
+		//		if ($index) $input->name($index);
 
-		$input->addClass("form-control");
-		$this->append($input);
-		return $input;
-
+		p($input)->addClass("form-control");
+		p($this)->append($input);
+		return p($input);
 	}
-
 }
-
-?>

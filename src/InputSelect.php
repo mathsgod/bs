@@ -1,10 +1,13 @@
 <?php
-//created by Raymond Chong
+ //created by Raymond Chong
 //date: 2015-08-18
 namespace BS;
-class InputSelect extends \P\HTMLDivElement {
-    public function __construct() {
-        parent::__construct();
+
+class InputSelect extends Element
+{
+    public function __construct()
+    {
+        parent::__construct("div");
         $this->classList->add("input-group");
 
         $div = p("div");
@@ -25,20 +28,18 @@ class InputSelect extends \P\HTMLDivElement {
         p($this)->append($input);
     }
 
-    public function ds($a) {
+    public function ds(array $a)
+    {
         $ul = p("ul");
         $ul->addClass("dropdown-menu");
-        foreach($a as $s) {
+        foreach ($a as $s) {
             $li = p("li");
             $link = p("a")->text($s);
-        	$link->attr("href","javascript:void(0)");
+            //$link->attr("href", "javascript:void(0)");
+            $link->attr("onClick","$(this).closest('div').parent().find('input').val($(this).text());");
             $li->append($link);
             $ul->append($li);
 
-            $link->attr("onClick", <<<EOT
-$(this).closest('div').parent().find('input').val($(this).text());
-EOT
-                );
         }
 
         p($this)->find("div.input-group-btn")->append($ul);
@@ -46,5 +47,4 @@ EOT
         return $this;
     }
 }
-
-?>
+ 

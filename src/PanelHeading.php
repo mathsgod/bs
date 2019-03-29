@@ -2,22 +2,22 @@
 
 namespace BS;
 
-class PanelHeading extends \P\HTMLDivElement
+class PanelHeading extends Element
 {
     public $title;
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct("div");
         $this->classList->add("panel-heading");
     }
 
-    public function title($text)
+    public function title($text = null)
     {
         if (!$this->title) {
             $this->title = p("h4")->addClass("panel-title")->appendTo($this);
         }
 
-        if ($text) {
+        if (func_num_args() == 1) {
             $a = $this->title->find("a");
             if ($a->size()) {
                 $a->text($text);
@@ -26,7 +26,7 @@ class PanelHeading extends \P\HTMLDivElement
             }
         }
 
-        return $this->title;
+        return $this;
     }
 
     public function collapse($id)
@@ -39,5 +39,4 @@ class PanelHeading extends \P\HTMLDivElement
         }
         return $a;
     }
-
 }

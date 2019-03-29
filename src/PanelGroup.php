@@ -2,15 +2,17 @@
 
 namespace BS;
 
-class PanelGroup extends \P\HTMLDivElement
+use P\Element;
+
+class PanelGroup extends Element
 {
     public $panel = [];
 
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct("div");
         $this->classList->add("panel-group");
-        $this->attributes["id"] = uniqid();
+        $this->setAttribute("id", uniqid());
     }
 
     public function addPanel(Panel $panel)
@@ -23,5 +25,5 @@ class PanelGroup extends \P\HTMLDivElement
         $this->append($panel);
         return $panel;
     }
-
 }
+

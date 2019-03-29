@@ -2,7 +2,7 @@
 
 namespace BS;
 
-class PanelTitle extends \P\HTMLElement
+class PanelTitle extends Element
 {
 
     public function __construct()
@@ -11,3 +11,4 @@ class PanelTitle extends \P\HTMLElement
         $this->classList->add("panel-title");
     }
 }
+

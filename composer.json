@@ -1,4 +1,10 @@
 {
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://raymond2.hostlink.com.hk/satis/web"
+		}
+	],
 	"name": "mathsgod/bs",
 	"description": "Raymond php bootstrap library",
 	"autoload": {
@@ -8,13 +14,17 @@
 	},
 	"require": {
 		"php": ">=5.4",
-		"mathsgod/p-query":"1.*"
+		"mathsgod/p-query": "^2.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "*"
 	},
 	"type": "library",
 	"license": "proprietary",
-	"authors":[
-	{
-		"name": "Raymond Chong"
-	}],
+	"authors": [
+		{
+			"name": "Raymond Chong"
+		}
+	],
 	"minimum-stability": "stable"
 }
