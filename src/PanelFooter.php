@@ -2,8 +2,6 @@
 
 namespace BS;
 
-use P\Element;
-
 class PanelFooter extends Element
 {
 

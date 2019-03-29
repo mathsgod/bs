@@ -14,7 +14,7 @@ class ButtonDropdown extends ButtonGroup
 		$this->button = $this->addButton($label);
 		$this->button->classList->add("dropdown-toggle");
 		p($this->button)->append(' <span class="caret"></span>');
-		$this->button->attributes["data-toggle"] = "dropdown";
+		$this->button->setAttribute("data-toggle", "dropdown");
 		$this->menu = new DropdownMenu();
 		$this->append($this->menu);
 	}

@@ -1,12 +1,12 @@
 <?php
 namespace BS;
 
-class Nav extends \P\Query
+class Nav extends Element
 {
     public function __construct()
     {
         parent::__construct("ul");
-        $this->addClass("nav");
+        $this->classList->add("nav");
     }
 
     public function add($label, $href)
@@ -16,7 +16,7 @@ class Nav extends \P\Query
         $li->append($a);
 
         $a->html($label);
-        $this->append($li);
+        p($this)->append($li);
         return $li;
     }
 }

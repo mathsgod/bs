@@ -1,3 +1,6 @@
+<?
+error_reporting(E_ALL || ~E_NOTICE);
+?>
 <html>
 
 <head>
@@ -32,11 +35,16 @@
 
         require_once(__DIR__ . "/vendor/autoload.php");
         use BS\InputSelect;
+        use BS\ButtonDropdown;
 
         $i = new InputSelect();
         $i->ds(["A", "B", "C"]);
         echo $i;
 
+
+        $bdd = new ButtonDropdown('test1');
+
+        echo $bdd;
         ?>
     </div>
 

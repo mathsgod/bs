@@ -1,22 +1,25 @@
 <?
 
 namespace BS;
-class ListGroupItem extends \P\HTMLElement {
+
+class ListGroupItem extends Element
+{
 	private $badge = null;
 
-	public function __construct($type = "li") {
+	public function __construct($type = "li")
+	{
 		parent::__construct($type);
 		$this->classList->add("list-group-item");
 	}
 
-	public function href($href) {
-		$this->tagName = "a";
-
-		$this->attributes["href"] = $href;
+	public function href($href)
+	{
+		$this->setAttribute("href", $href);
 		return $this;
 	}
 
-	public function badge($badge) {
+	public function badge($badge)
+	{
 		if ($this->badge) {
 			p($this)->removeChild($this->badge);
 		}
@@ -29,7 +32,8 @@ class ListGroupItem extends \P\HTMLElement {
 		return $this;
 	}
 
-	public function heading($heading) {
+	public function heading($heading)
+	{
 		if ($this->heading) {
 			p($this)->removeChild($this->heading);
 		}
@@ -40,7 +44,8 @@ class ListGroupItem extends \P\HTMLElement {
 		return $this;
 	}
 
-	public function active($value = true) {
+	public function active($value = true)
+	{
 		if ($value) {
 			p($this)->addClass("active");
 		} else {
@@ -50,7 +55,8 @@ class ListGroupItem extends \P\HTMLElement {
 		return $this;
 	}
 
-	public function disabled() {
+	public function disabled()
+	{
 		p($this)->addClass("disabled");
 		return $this;
 	}

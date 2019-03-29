@@ -1,6 +1,13 @@
 {
 	"repositories": [
 		{
+			"type": "path",
+			"url": "../p-query",
+			"options": {
+				"symlink": true
+			}
+		},
+		{
 			"type": "composer",
 			"url": "https://raymond2.hostlink.com.hk/satis/web"
 		}
@@ -14,7 +21,7 @@
 	},
 	"require": {
 		"php": ">=5.4",
-		"mathsgod/p-query": "^2.0"
+		"mathsgod/p-query": "master-dev"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*"

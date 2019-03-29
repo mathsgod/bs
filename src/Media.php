@@ -1,15 +1,15 @@
 <?
 
 namespace BS;
-class MediaHeading extends \P\HTMLElement {
+class MediaHeading extends Element {
 	public function __construct() {
 		parent::__construct("h4");
 	}
 }
 
-class MediaBody extends \P\HTMLDivElement {
+class MediaBody extends Element {
 	public function __construct() {
-		parent::__construct();
+		parent::__construct("div");
 		$this->classList->add("media-body");
 	}
 
@@ -26,10 +26,10 @@ class MediaBody extends \P\HTMLDivElement {
 
 }
 
-class Media extends \P\HTMLDivElement {
+class Media extends Element {
 	public $body;
 	public function __construct() {
-		parent::__construct();
+		parent::__construct("div");
 		$this->classList->add("media");
 		$this->body = new MediaBody();
 		p($this->body)->appendTo($this);

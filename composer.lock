@@ -4,21 +4,16 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a37f863e9fe7b23f431ebb6f99c02c85",
+    "content-hash": "832ce35388006476900d62b61572a1e5",
     "packages": [
         {
             "name": "mathsgod/p-query",
-            "version": "2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://mathsgod:9df64f890850ef93d948662630d719c3c69da5da@github.com/mathsgod/p-query.git",
-                "reference": "c296bd940aa3747dc9c5f4aa176abbb681a6c765"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://raymond2.hostlink.com.hk/satis/web/dist/mathsgod/p-query/mathsgod-p-query-2.0.3-30d2b0.zip",
-                "reference": "c296bd940aa3747dc9c5f4aa176abbb681a6c765",
-                "shasum": "5471d642f0c84b1a80fb729e5aadc0a4885b031b"
+                "type": "path",
+                "url": "../p-query",
+                "reference": "02415f7e6753e24dcc8b7a17c14eb3a35fecd8b4",
+                "shasum": null
             },
             "require": {
                 "php": ">=5.4",
@@ -45,7 +40,9 @@
                 }
             ],
             "description": "Raymond php html library",
-            "time": "2019-03-29T03:46:31+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "symfony/css-selector",
@@ -1577,7 +1574,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mathsgod/p-query": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

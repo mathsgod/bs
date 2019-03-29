@@ -1,38 +1,45 @@
 <?php
 namespace BS;
-class TabItem {
+
+class TabItem
+{
     public static $tabitem_id = 0;
 
     public $tab;
     public $pane;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->tab = new \PElement("li");
         $this->pane = \PDiv::_();
     }
 
-    public function active() {
+    public function active()
+    {
         $this->tab->addClass("active");
         $this->pane->addClass("active");
         return $this;
     }
 }
 
-class Tab extends \P\Query {
+class Tab extends Element
+{
     public $tabs;
     public $panes;
     public static $tabitem_id = 0;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct("div");
-        $this->tabs = p("ul")->addClass("nav nav-tabs");
-        $this->panes = p("div")->addClass("tab-content");
+        $this->tabs = p("ul")->addClass("nav nav-tabs")[0];
+        $this->panes = p("div")->addClass("tab-content")[0];
 
-        $this->append($this->tabs);
-        $this->append($this->panes);
+        p($this)->append($this->tabs);
+        p($this)->append($this->panes);
     }
 
-    public function add($label, $content) {
+    public function add($label, $content)
+    {
         $li = p("li");
 
         $a = p("a");
@@ -43,14 +50,14 @@ class Tab extends \P\Query {
         $a->html($label);
         $li->append($a);
 
-        $this->tabs->append($li);
+        p($this->tabs)->append($li);
 
         $div = p("div");
         $div->html($content);
         $div->addClass('tab-pane');
         $div->attr('id', "tab-{$tab_id}");
 
-        $this->panes->append($div);
+        p($this->panes)->append($div);
 
         $p = new \P\Query();
         $p[] = $li[0];
@@ -58,5 +65,3 @@ class Tab extends \P\Query {
         return $p;
     }
 }
-
-?>

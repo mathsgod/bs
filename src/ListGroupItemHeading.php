@@ -1,9 +1,12 @@
 <?
 
 namespace BS;
-class ListGroupItemHeading extends \P\HTMLElement {
-	public function __construct() {
+
+class ListGroupItemHeading extends Element
+{
+	public function __construct()
+	{
 		parent::__construct("h4");
-        $this->classList[]="list-group-item-heading";
+		$this->classList->add("list-group-item-heading");
 	}
 }

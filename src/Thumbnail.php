@@ -1,13 +1,13 @@
 <?
 
 namespace BS;
-class Thumbnail extends HTMLDivElement {
+class Thumbnail extends Element {
 
 	public function __construct() {
-		parent::construct();
+		parent::construct("div");
 		$this->classList->add("thumbnail");
 		
-		$image=p("img");
+		//$image=p("img");
 		//$this->img=
 	}
 	

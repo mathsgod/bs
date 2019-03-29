@@ -1,7 +1,7 @@
 <?
 
 namespace BS;
-class ListGroup extends \P\HTMLElement {
+class ListGroup extends Element {
 	public function __construct() {
 		parent::__construct("ul");
 		$this->classList->add("list-group");

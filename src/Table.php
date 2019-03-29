@@ -1,10 +1,12 @@
 <?php
 namespace BS;
-class Table extends \P\Query {
-    public function __construct() {
+
+class Table extends Element
+{
+    public function __construct()
+    {
         parent::__construct("table");
-        $this->addClass("table");
+        $this->classList->add("table");
     }
 }
 
-?>

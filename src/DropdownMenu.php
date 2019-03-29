@@ -4,7 +4,7 @@
 // Date: 2014/06/06 15:47:25
 namespace BS;
 
-class DropdownMenu extends \P\HTMLElement
+class DropdownMenu extends Element
 {
 	public function __construct()
 	{
@@ -14,8 +14,8 @@ class DropdownMenu extends \P\HTMLElement
 
 	public function addItem($item, $href)
 	{
-		$li = new \P\HTMLLIElement();
-		$this->append($li);
+		$li = p("li");
+		p($this)->append($li);
 
 		$a = p("a")->appendTo($li);
 		$a->attr("href", $href);

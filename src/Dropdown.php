@@ -3,16 +3,19 @@
 // Create by: Raymond Chong
 // Date: 2014/06/06 15:47:25
 namespace BS;
-class Dropdown extends \P\HTMLDivElement {
+
+class Dropdown extends Element
+{
 	private $button = null;
 	private $dropdownMenu = null;
 
-	public function __construct($label) {
-		parent::__construct();
+	public function __construct($label)
+	{
+		parent::__construct("div");
 		$this->classList->add("dropdown");
 
 		$this->button = new Button();
-		$this->button->attributes["data-toggle"] = "dropdown";
+		$this->button->setAttribute("data-toggle", "dropdown");
 		p($this->button)->append($label);
 		p($this->button)->append(' <span class="caret"></span>');
 		p($this)->append($this->button);
@@ -21,19 +24,23 @@ class Dropdown extends \P\HTMLDivElement {
 		p($this)->append($this->dropdownMenu);
 	}
 
-	public function button() {
+	public function button()
+	{
 		return $this->button;
 	}
 
-	public function menu() {
+	public function menu()
+	{
 		return $this->dropdownMenu;
 	}
 
-	public function addItem($item, $href) {
+	public function addItem($item, $href)
+	{
 		return $this->dropdownMenu->addItem($item, $href);
 	}
 
-	public static function _() {
-		return new Dropdown();
+	public static function _($label)
+	{
+		return new Dropdown($label);
 	}
 }
