@@ -1,12 +1,18 @@
 <?php
 namespace BS;
-class CheckBox extends \P\Query {
-    public function __construct() {
-        parent::__construct("div");
-        $this->addClass("checkbox");
 
-        $checkbox = p("input");
-        $checkbox->attr("type", "checkbox");
-        $this->append($checkbox);
+class CheckBox extends Element
+{
+
+    public $input;
+
+    public function __construct()
+    {
+        parent::__construct("div");
+        $this->classList->add("checkbox");
+
+        $this->input = p("input")[0];
+        p($this->input)->attr("type", "checkbox");
+        p($this)->append($this->input);
     }
 }

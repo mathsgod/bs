@@ -1,10 +1,12 @@
 <?
 namespace BS;
-class Collapse extends \PDiv{
-	public function __construct(){
-		parent::__construct();
-		$this->addClass("panel-group");
+
+
+class Collapse extends Element
+{
+	public function __construct()
+	{
+		parent::__construct("div");
+		$this->classList->add("panel-group");
 	}
 }
-
-?>

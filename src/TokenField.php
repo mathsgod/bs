@@ -10,11 +10,11 @@ class TokenField extends Select
 	{
 		parent::__construct();
 		$this->setAttribute("data-tags", "true");
-		$this->setAttribute("multiple", "true");
+		$this->setAttribute("multiple", true);
 		$this->classList->add('select2');
 	}
 
-	public function options($options)
+	public function options(array $options)
 	{
 		$select = $this;
 		if (is_array($select->attributes["data-value"])) {
@@ -23,7 +23,7 @@ class TokenField extends Select
 			$data_values = explode(",", $select->attributes["data-value"]);
 		}
 
-		$select->childNodes = array();
+		p($select)->empty();
 		$options_value = [];
 		foreach ($options as $k => $o) {
 			if (is_array($o)) {
@@ -40,9 +40,10 @@ class TokenField extends Select
 					$options_value[] = $opt;
 				}
 			} else {
-				$option = p("option")->appendTo(p($select));
+				$option = p("option");
 				$option->text($o);
 				$option->val($o);
+				$option->appendTo(p($select));
 
 				if (in_array($o, $data_values)) {
 					$option->attr("selected", true);
