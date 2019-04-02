@@ -1,6 +1,9 @@
 <?php
 namespace BS;
 
+use P\HTMLDivElement;
+
+
 class TabItem
 {
     public static $tabitem_id = 0;
@@ -22,7 +25,7 @@ class TabItem
     }
 }
 
-class Tab extends Element
+class Tab extends HTMLDivElement
 {
     public $tabs;
     public $panes;
@@ -30,7 +33,7 @@ class Tab extends Element
 
     public function __construct()
     {
-        parent::__construct("div");
+        parent::__construct();
         $this->tabs = p("ul")->addClass("nav nav-tabs")[0];
         $this->panes = p("div")->addClass("tab-content")[0];
 

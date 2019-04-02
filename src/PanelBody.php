@@ -2,12 +2,15 @@
 
 namespace BS;
 
-class PanelBody extends Element
+use P\HTMLDivElement;
+
+
+class PanelBody extends HTMLDivElement
 {
 
     public function __construct()
     {
-        parent::__construct("div");
+        parent::__construct();
         $this->classList->add("panel-body");
     }
 }

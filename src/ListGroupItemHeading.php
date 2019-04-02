@@ -2,7 +2,10 @@
 
 namespace BS;
 
-class ListGroupItemHeading extends Element
+use P\HTMLElement;
+
+
+class ListGroupItemHeading extends HTMLElement
 {
 	public function __construct()
 	{

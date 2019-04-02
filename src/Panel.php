@@ -2,6 +2,9 @@
 
 namespace BS;
 
+use P\HTMLDivElement;
+
+
 class PanelClassTokenList extends \P\DOMTokenList
 {
 	public function offsetSet($offset, $value)
@@ -16,7 +19,7 @@ class PanelClassTokenList extends \P\DOMTokenList
 	}
 }
 
-class Panel extends Element
+class Panel extends HTMLDivElement
 {
 	public $collapsible = false;
 	public $collapsed = true;
@@ -37,7 +40,7 @@ class Panel extends Element
 
 	public function __construct($type = "default")
 	{
-		parent::__construct("div");
+		parent::__construct();
 		$this->classList->add("panel");
 		$this->classList->add("panel-$type");
 	}

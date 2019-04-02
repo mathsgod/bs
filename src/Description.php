@@ -2,8 +2,12 @@
 
 namespace BS;
 
-class Description extends Element
+use P\HTMLElement;
+
+
+class Description extends HTMLElement
 {
+	use Element;
 	public function __construct()
 	{
 		parent::__construct("dl");

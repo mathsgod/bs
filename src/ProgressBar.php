@@ -1,13 +1,16 @@
 <?php
 namespace BS;
 
-class ProgressBar extends Element
+use P\HTMLDivElement;
+
+
+class ProgressBar extends HTMLDivElement
 {
     public $bar = null;
 
     public function __construct()
     {
-        parent::__construct("div");
+        parent::__construct();
         $this->classList->add("progress");
 
         $this->bar = p("div")->addClass("progress-bar")->appendTo($this);

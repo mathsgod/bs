@@ -1,7 +1,10 @@
 <?php
 namespace BS;
 
-class Nav extends Element
+use P\HTMLElement;
+
+
+class Nav extends HTMLElement
 {
     public function __construct()
     {

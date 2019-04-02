@@ -2,12 +2,15 @@
 
 namespace BS;
 
-class PanelHeading extends Element
+use P\HTMLDivElement;
+
+
+class PanelHeading extends HTMLDivElement
 {
     public $title;
     public function __construct()
     {
-        parent::__construct("div");
+        parent::__construct();
         $this->classList->add("panel-heading");
     }
 

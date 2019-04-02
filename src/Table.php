@@ -1,12 +1,13 @@
 <?php
 namespace BS;
 
-class Table extends Element
+use P\HTMLTableElement;
+
+
+class Table extends HTMLTableElement
 {
     public function __construct()
     {
-        parent::__construct("table");
         $this->classList->add("table");
     }
 }
-

@@ -2,7 +2,10 @@
 
 namespace BS;
 
-class PanelTitle extends Element
+use P\HTMLElement;
+
+
+class PanelTitle extends HTMLElement
 {
 
     public function __construct()

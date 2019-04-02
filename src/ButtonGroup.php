@@ -2,15 +2,19 @@
 
 namespace BS;
 
-class ButtonGroup extends Element
+use P\HTMLDivElement;
+
+
+class ButtonGroup extends HTMLDivElement
 {
+	use Element;
 	public static $SIZE = ["lg", "sm", "xs"];
 
 	public $size;
 
 	public function __construct($size = null)
 	{
-		parent::__construct("div");
+		parent::__construct();
 
 		$this->classList->add("btn-group");
 

@@ -1,11 +1,14 @@
 <?
 namespace BS;
 
-class InputGroup extends Element
+use P\HTMLDivElement;
+
+
+class InputGroup extends HTMLDivElement
 {
 	public function __construct()
 	{
-		parent::__construct("div");
+		parent::__construct();
 		$this->classList->add("input-group");
 	}
 

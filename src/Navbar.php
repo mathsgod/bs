@@ -2,7 +2,10 @@
 
 namespace BS;
 
-class NavBar extends Element
+use P\HTMLElement;
+
+
+class NavBar extends HTMLElement
 {
 
 	public function __construct()

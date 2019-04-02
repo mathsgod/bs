@@ -2,7 +2,10 @@
 
 namespace BS;
 
-class ListGroupItem extends Element
+use P\HTMLElement;
+
+
+class ListGroupItem extends HTMLElement
 {
 	private $badge = null;
 

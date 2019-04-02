@@ -1,14 +1,18 @@
 <?php
 namespace BS;
 
-class CheckBox extends Element
+use P\HTMLDivElement;
+
+
+class CheckBox extends HTMLDivElement
 {
+    use Element;
 
     public $input;
 
     public function __construct()
     {
-        parent::__construct("div");
+        parent::__construct();
         $this->classList->add("checkbox");
 
         $this->input = p("input")[0];

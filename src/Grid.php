@@ -2,15 +2,10 @@
 
 namespace BS;
 
-use P\Element;
+use P\HTMLDivElement;
 
-class Grid extends Element
+class Grid extends HTMLDivElement
 {
-    public function __construct()
-    {
-        parent::__construct("div");
-    }
-
     public function addRow()
     {
         $row = new GridRow();
@@ -19,11 +14,11 @@ class Grid extends Element
     }
 }
 
-class GridRow extends Element
+class GridRow extends HTMLDivElement
 {
     public function __construct()
     {
-        parent::__construct("div");
+        parent::__construct();
         $this->classList->addClass("row");
     }
 
@@ -36,11 +31,8 @@ class GridRow extends Element
     }
 }
 
-class GridCol extends Element
+class GridCol extends HTMLDivElement
 {
-    public function __construct()
-    {
-        parent::__construct("div");
-    }
+ 
 }
 

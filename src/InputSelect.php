@@ -3,11 +3,14 @@
 //date: 2015-08-18
 namespace BS;
 
-class InputSelect extends Element
+use P\HTMLDivElement;
+
+
+class InputSelect extends HTMLDivElement
 {
     public function __construct()
     {
-        parent::__construct("div");
+        parent::__construct();
         $this->classList->add("input-group");
 
         $div = p("div");

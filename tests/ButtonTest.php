@@ -25,12 +25,10 @@ final class ButtonTest extends TestCase
     }
 
     public function test_href(){
-        $btn = new Button();
+        $btn = new Button("default",null,"https://www.google.com");
         $btn->setAttribute("test","abc");
-        $btn=$btn->href("https://www.google.com");
 
-
-        $this->assertEquals('<a type="button" class="btn btn-default" test="abc" href="https://www.google.com"></a>', (string)$btn);
+        $this->assertEquals('<a type="button" class="btn btn-default" href="https://www.google.com" test="abc"></a>', (string)$btn);
     }
 
     public function test_icon(){

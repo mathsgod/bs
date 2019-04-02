@@ -17,7 +17,7 @@ final class PanelTest extends TestCase
     public function test_heading(){
         $p = new Panel();
         $p->heading("head1");
-        $this->assertEquals('<div class="panel panel-default"><div class="panel-heading"></div></div>', (string)$p);
+        $this->assertEquals('<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">head1</h4></div></div>', (string)$p);
     }
 
 }

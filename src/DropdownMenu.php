@@ -4,8 +4,12 @@
 // Date: 2014/06/06 15:47:25
 namespace BS;
 
-class DropdownMenu extends Element
+use P\HTMLElement;
+
+
+class DropdownMenu extends HTMLElement
 {
+	use Element;
 	public function __construct()
 	{
 		parent::__construct("ul");

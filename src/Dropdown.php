@@ -4,14 +4,19 @@
 // Date: 2014/06/06 15:47:25
 namespace BS;
 
-class Dropdown extends Element
+use P\HTMLDivElement;
+
+
+class Dropdown extends HTMLDivElement
 {
+
+	use Element;
 	private $button = null;
 	private $dropdownMenu = null;
 
 	public function __construct($label)
 	{
-		parent::__construct("div");
+		parent::__construct();
 		$this->classList->add("dropdown");
 
 		$this->button = new Button();

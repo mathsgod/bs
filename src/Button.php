@@ -1,6 +1,7 @@
 <?php
 
 namespace BS;
+use P\HTMLElement;
 
 class ButtonClassTokenList extends \P\DOMTokenList
 {
@@ -22,14 +23,15 @@ class ButtonClassTokenList extends \P\DOMTokenList
 	}
 }
 
-class Button extends Element
+class Button extends HTMLElement
 {
+	use Element;
 	public static $_SIZE = ["btn-lg", "btn-sm", "btn-xs"];
 	public static $_CLASS = ["btn-default", "btn-primary", "btn-success", "btn-info", "btn-warning", "btn-danger"];
 
-	public function __construct($option = "default", $size = null, $tagName = "button")
+	public function __construct($option = "default", $size = null, $href = null)
 	{
-		parent::__construct($tagName);
+		parent::__construct($href ? "a" : "button");
 		$this->setAttribute("type", "button");
 
 
@@ -38,6 +40,10 @@ class Button extends Element
 
 		if ($size) {
 			$this->classList[] = "btn-$size";
+		}
+
+		if ($href) {
+			$this->setAttribute("href", $href);
 		}
 	}
 
@@ -58,22 +64,6 @@ class Button extends Element
 	{
 		$this->setAttribute("target", $target);
 		return $this;
-	}
-
-	public function href($getter)
-	{
-		$a = new Button("default", null, "a");
-		foreach ($this->attributes as $attr) {
-			$a->setAttribute($attr->name, $attr->value);
-		}
-		$this->ownerDocument->replaceChild($this->ownerDocument->importNode($a), $this);
-
-		if ($object = p($this)->data("object")) {
-			$a->setAttribute("href", \My\Func::_($getter)->call($object));
-		} else {
-			$a->setAttribute("href", $getter);
-		}
-		return $a;
 	}
 
 	public function text($text)
@@ -111,5 +101,15 @@ class Button extends Element
 		}
 
 		return $this;
+	}
+
+	public function href($href)
+	{
+		if ($href instanceof \Closure) {
+			$href = $href(p($this)->data("object"));
+			$this->setAttribute("onClick", "window.self.location='$href';");
+		} else {
+			$this->setAttribute("onClick", "window.self.location='$href';");
+		}
 	}
 }

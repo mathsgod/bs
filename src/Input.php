@@ -1,11 +1,13 @@
 <?
 namespace BS;
 
-class Input extends Element
+use P\HTMLInputElement;
+
+class Input extends HTMLInputElement
 {
     public function __construct()
     {
-        parent::__construct("input");
+        parent::__construct();
         $this->classList->add("form-control");
     }
 }

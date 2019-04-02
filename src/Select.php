@@ -1,11 +1,14 @@
 <?
 namespace BS;
 
-class Select extends Element
+use P\HTMLSelectElement;
+
+
+class Select extends HTMLSelectElement
 {
     public function __construct()
     {
-        parent::__construct("select");
+        parent::__construct();
         $this->classList->add("form-control");
     }
 

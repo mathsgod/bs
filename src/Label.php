@@ -2,6 +2,9 @@
 
 namespace BS;
 
+use P\HTMLElement;
+
+
 class LabelClassTokenList extends \P\DOMTokenList
 {
 	public function offsetSet($offset, $value)
@@ -17,7 +20,7 @@ class LabelClassTokenList extends \P\DOMTokenList
 	}
 }
 
-class Label extends Element
+class Label extends HTMLElement
 {
 	const LABEL_CLASS = ["label-default", "label-primary", "label-success", "label-info", "label-warning", "label-danger"];
 
