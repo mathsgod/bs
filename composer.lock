@@ -4,19 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "832ce35388006476900d62b61572a1e5",
+    "content-hash": "1147ee824919ea9865ea5de512bfa38d",
     "packages": [
         {
             "name": "mathsgod/p-query",
-            "version": "dev-master",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://mathsgod:9df64f890850ef93d948662630d719c3c69da5da@github.com/mathsgod/p-query.git",
+                "reference": "5197e4a21d76caf8cb35f25b6b08981ded87ec0d"
+            },
             "dist": {
-                "type": "path",
-                "url": "../p-query",
-                "reference": "02415f7e6753e24dcc8b7a17c14eb3a35fecd8b4",
-                "shasum": null
+                "type": "zip",
+                "url": "https://raymond2.hostlink.com.hk/satis/web/dist/mathsgod/p-query/mathsgod-p-query-2.0.6-e0e4a9.zip",
+                "reference": "5197e4a21d76caf8cb35f25b6b08981ded87ec0d",
+                "shasum": "d393fe41f6428d0599fd6e47640822b278e498bf"
             },
             "require": {
-                "php": ">=5.4",
+                "php": ">=5.6",
                 "symfony/css-selector": "^4.2"
             },
             "require-dev": {
@@ -36,17 +41,16 @@
             ],
             "authors": [
                 {
-                    "name": "Raymond Chong"
+                    "name": "Raymond Chong",
+                    "email": "mathsgod@yahoo.com"
                 }
             ],
             "description": "Raymond php html library",
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2019-04-04T05:16:16+00:00"
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.2.4",
+            "version": "v4.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -1482,16 +1486,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b"
+                "reference": "06b6ce404ee574e9c1787fb67bb9980ca4387c34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/cb2f008f3f05af2893a87208fe6a6c4985483f8b",
-                "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/06b6ce404ee574e9c1787fb67bb9980ca4387c34",
+                "reference": "06b6ce404ee574e9c1787fb67bb9980ca4387c34",
                 "shasum": ""
             },
             "require": {
@@ -1518,7 +1522,7 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "time": "2017-04-07T12:08:54+00:00"
+            "time": "2019-04-03T18:37:40+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -1574,13 +1578,11 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mathsgod/p-query": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4"
+        "php": ">=5.6"
     },
     "platform-dev": []
 }

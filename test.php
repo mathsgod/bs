@@ -36,6 +36,7 @@ error_reporting(E_ALL || ~E_NOTICE);
         require_once(__DIR__ . "/vendor/autoload.php");
         use BS\InputSelect;
         use BS\ButtonDropdown;
+        use BS\Panel;
 
         $i = new InputSelect();
         $i->ds(["A", "B", "C"]);
@@ -45,6 +46,12 @@ error_reporting(E_ALL || ~E_NOTICE);
         $bdd = new ButtonDropdown('test1');
 
         echo $bdd;
+
+
+        $p=new Panel();
+        $p->heading("head");
+
+        echo $p;
         ?>
     </div>
 

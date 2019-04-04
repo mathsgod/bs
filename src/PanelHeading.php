@@ -16,6 +16,7 @@ class PanelHeading extends HTMLDivElement
 
     public function title($text = null)
     {
+        
         if (!$this->title) {
             $this->title = p("h4")->addClass("panel-title")->appendTo($this);
         }

@@ -1,6 +1,7 @@
 <?php
 
 namespace BS;
+
 use P\HTMLElement;
 
 class ButtonClassTokenList extends \P\DOMTokenList
@@ -9,25 +10,27 @@ class ButtonClassTokenList extends \P\DOMTokenList
 	{
 
 		$values = $this->values();
+
 		if ($this->values()) {
-			if (in_array($value, Button::$_CLASS)) {
-				$this->value = implode(" ", array_diff($values, Button::$_CLASS));
+			if (in_array($value, Button::BUTTON_CLASS)) {
+				$this->value = implode(" ", array_diff($values, Button::BUTTON_CLASS));
 			}
 
-			if (in_array($value, Button::$_SIZE)) {
-				$this->value = implode(" ", array_diff($values, Button::$_SIZE));
+			if (in_array($value, Button::BUTTON_SIZE)) {
+				$this->value = implode(" ", array_diff($values, Button::BUTTON_SIZE));
 			}
 		}
 
 		parent::offsetSet($offset, $value);
 	}
+
 }
 
 class Button extends HTMLElement
 {
 	use Element;
-	public static $_SIZE = ["btn-lg", "btn-sm", "btn-xs"];
-	public static $_CLASS = ["btn-default", "btn-primary", "btn-success", "btn-info", "btn-warning", "btn-danger"];
+	const BUTTON_SIZE = ["btn-lg", "btn-sm", "btn-xs"];
+	const BUTTON_CLASS = ["btn-default", "btn-primary", "btn-success", "btn-info", "btn-warning", "btn-danger"];
 
 	public function __construct($option = "default", $size = null, $href = null)
 	{
