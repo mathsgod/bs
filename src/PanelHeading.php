@@ -30,7 +30,7 @@ class PanelHeading extends HTMLDivElement
             }
         }
 
-        return $this;
+        return $this->title;
     }
 
     public function collapse($id)

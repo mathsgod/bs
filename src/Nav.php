@@ -6,6 +6,7 @@ use P\HTMLElement;
 
 class Nav extends HTMLElement
 {
+    use Element;
     public function __construct()
     {
         parent::__construct("ul");

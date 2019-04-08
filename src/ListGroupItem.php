@@ -7,6 +7,7 @@ use P\HTMLElement;
 
 class ListGroupItem extends HTMLElement
 {
+	use Element;
 	private $badge = null;
 
 	public function __construct($type = "li")
