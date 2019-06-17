@@ -23,7 +23,6 @@ class ButtonClassTokenList extends \P\DOMTokenList
 
 		parent::offsetSet($offset, $value);
 	}
-
 }
 
 class Button extends HTMLElement
@@ -114,5 +113,12 @@ class Button extends HTMLElement
 		} else {
 			$this->setAttribute("onClick", "window.self.location='$href';");
 		}
+	}
+
+	public function fancybox()
+	{
+		$this->setAttribute("data-fancybox", true);
+		$this->setAttribute("data-type", "ajax");
+		return $this;
 	}
 }
