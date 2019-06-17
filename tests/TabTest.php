@@ -11,6 +11,8 @@ final class TabTest extends TestCase
     public function test_create()
     {
         $p = new Tab();
-        $this->assertEquals('<div><ul class="nav nav-tabs"></ul><div class="tab-content"></div></div>', (string)$p);
+
+        $this->assertEquals("ul", $p->childNodes[0]->tagName);
+        $this->assertEquals("div", $p->childNodes[1]->tagName);
     }
 }
