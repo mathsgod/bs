@@ -30,7 +30,7 @@ class DropdownMenu extends HTMLElement
 
 	public function addDivider()
 	{
-		$li = new \P\HTMLLIElement();
+		$li = new HTMLElement("li");
 		$this->append($li);
 		$li->classList->add("divider");
 		return $li;

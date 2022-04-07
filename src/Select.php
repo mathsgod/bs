@@ -1,4 +1,5 @@
-<?
+<?php
+
 namespace BS;
 
 use P\HTMLSelectElement;
@@ -12,10 +13,11 @@ class Select extends HTMLSelectElement
         $this->classList->add("form-control");
     }
 
-    public function options(array $arrs){
+    public function options(array $arrs)
+    {
 
         foreach ($arrs as $v) {
-            $option=p("option");
+            $option = p("option");
             $option->text($v)->val($v);
             p($this)->append($option);
         }

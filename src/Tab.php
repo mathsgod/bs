@@ -1,8 +1,9 @@
 <?php
+
 namespace BS;
 
 use P\HTMLDivElement;
-
+use P\HTMLElement;
 
 class TabItem
 {
@@ -13,8 +14,8 @@ class TabItem
 
     public function __construct()
     {
-        $this->tab = new \PElement("li");
-        $this->pane = \PDiv::_();
+        $this->tab = p(new HTMLElement("li"));
+        $this->pane = p(new HTMLDivElement());
     }
 
     public function active()

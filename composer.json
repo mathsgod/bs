@@ -1,17 +1,4 @@
 {
-	"repositories": [
-		{
-			"type": "path",
-			"url": "../p-query",
-			"options": {
-				"symlink": true
-			}
-		},
-		{
-			"type": "composer",
-			"url": "https://raymond2.hostlink.com.hk/satis/web"
-		}
-	],
 	"name": "mathsgod/bs",
 	"description": "Raymond php bootstrap library",
 	"autoload": {
@@ -20,11 +7,11 @@
 		}
 	},
 	"require": {
-		"php": ">=5.6",
-		"mathsgod/p-query": "^2.0"
+		"php": "^8.0",
+		"mathsgod/p-query": "^3.2"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "*"
+		"phpunit/phpunit": "^9.5"
 	},
 	"type": "library",
 	"license": "proprietary",

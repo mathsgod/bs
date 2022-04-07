@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace BS;
 
@@ -14,4 +14,3 @@ class PanelTitle extends HTMLElement
         $this->classList->add("panel-title");
     }
 }
-

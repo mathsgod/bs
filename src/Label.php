@@ -39,7 +39,7 @@ class Label extends HTMLElement
 				if (!$this->hasAttribute("class")) {
 					$this->setAttribute("class", "");
 				}
-				return new LabelClassTokenList($this->attributes->getNamedItem("class"));
+				return new LabelClassTokenList($this, "class");
 				break;
 		}
 		return parent::__get($name);

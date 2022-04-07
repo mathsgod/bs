@@ -19,7 +19,7 @@ class GridRow extends HTMLDivElement
     public function __construct()
     {
         parent::__construct();
-        $this->classList->addClass("row");
+        $this->classList->add("row");
     }
 
     public function addCol($size = 1)
@@ -33,6 +33,4 @@ class GridRow extends HTMLDivElement
 
 class GridCol extends HTMLDivElement
 {
- 
 }
-

@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace BS;
 
@@ -14,4 +14,3 @@ class PanelBody extends HTMLDivElement
         $this->classList->add("panel-body");
     }
 }
-

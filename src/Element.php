@@ -1,4 +1,4 @@
-<?
+<?php
 namespace BS;
 
 trait Element

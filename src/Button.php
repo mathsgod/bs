@@ -56,7 +56,7 @@ class Button extends HTMLElement
 				if (!$this->hasAttribute("class")) {
 					$this->setAttribute("class", "");
 				}
-				return new ButtonClassTokenList($this->attributes->getNamedItem("class"));
+				return new ButtonClassTokenList($this, "class");
 				break;
 		}
 		return parent::__get($name);
